@@ -1,24 +1,15 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import WAppfooter from "./components/app-footer";
+import WAppHeader from "./components/app-header";
+import {BrowserRouter} from 'react-router-dom'
+import GetRoutes from "./router";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <h2><WAppHeader/></h2>
+      <h2><GetRoutes/></h2>
+      <h2><WAppfooter/></h2>
+    </BrowserRouter>
   );
 }
 
