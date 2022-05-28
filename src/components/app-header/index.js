@@ -1,12 +1,22 @@
 import React, { memo } from 'react'
 import { NavLink } from 'react-router-dom'
-
+import { HeadWrapper, HeadLeft } from "./style"
 const WAppHeader = memo(() => {
   return (
-    <div>
-      <NavLink to={'/mine'}>我的音乐</NavLink>
-      <NavLink to={'/friend'}>我的朋友</NavLink>
-    </div>
+    <HeadWrapper>
+      <div className='content'>
+        <HeadLeft>
+          <a href='#/' className='logo sprite_01'></a>
+        </HeadLeft>
+        <NavLink to={'/discover'}>发现音乐</NavLink>
+        <NavLink to={'/mine'}>我的音乐</NavLink>
+        <NavLink to={'/friend'}>关注</NavLink>
+        <NavLink to={'/store'}>商城</NavLink>
+        <NavLink to={'/musician'}>音乐人</NavLink>
+        <NavLink to={'/download'}>下载客户端</NavLink>
+      </div>
+      <div className='divider'></div>
+    </HeadWrapper>
   )
 })
 

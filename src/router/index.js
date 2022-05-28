@@ -6,16 +6,37 @@ export default function GetRoutes() {
 
     const routes = useRoutes([
         {
-            path: '/',
-            element: <Content/>
+            path: '/discover',
+            element: <Content />,
+            children: [{
+                path: 'toplist',
+                element: <Content />,
+
+            }, {
+                path: 'playlist',
+                element: <Content />,
+
+            }, {
+                path: 'djradio',
+                element: <Content />,
+
+            }, {
+                path: 'artist',
+                element: <Content />,
+
+            }, {
+                path: 'album',
+                element: <Content />,
+
+            },]
         },
         {
             path: '/mine',
-            element: <Mine/>
+            element: <Mine />
         },
         {
             path: '/friend',
-            element: <Friend/>
+            element: <Friend />
         },
     ])
     return routes
