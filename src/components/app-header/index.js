@@ -16,7 +16,7 @@ const WAppHeader = memo(() => {
         <NavLink to={'/download'}>下载客户端<span className='sprite_01 icon'></span></NavLink>
         <HeadRight>
 
-          <HeadRight/>
+          </HeadRight>
       </div>
       <div className='divider'></div>
     </HeadWrapper>

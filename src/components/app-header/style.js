@@ -8,12 +8,7 @@ export const HeadLeft = styled.div`
     }
 `
 export const HeadRight = styled.div`
-    .logo{
-        display:block;
-        width:176px;
-        height:69px;
-        background-position:0 0;
-    }
+    
 `
 export const HeadWrapper = styled.div`
      
