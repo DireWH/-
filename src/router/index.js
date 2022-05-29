@@ -31,6 +31,10 @@ export default function GetRoutes() {
             },]
         },
         {
+            path: '/',
+            element: <Content />
+        },
+        {
             path: '/mine',
             element: <Mine />
         },

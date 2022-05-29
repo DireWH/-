@@ -7,6 +7,14 @@ export const HeadLeft = styled.div`
         background-position:0 0;
     }
 `
+export const HeadRight = styled.div`
+    .logo{
+        display:block;
+        width:176px;
+        height:69px;
+        background-position:0 0;
+    }
+`
 export const HeadWrapper = styled.div`
      
      background-color: #242424;
@@ -20,11 +28,24 @@ export const HeadWrapper = styled.div`
          justify-content:space-between;
          a{
              line-height:70px;
-             display:inline-block;
+             position:relative;
+             &.active{
+                 color:red;
+                 span{
+                    position:absolute;
+                    display:block;
+                    width:12px;
+                    height:7px;
+                    background-position: -226px 0;
+                    bottom:-2px;
+                    left:50%;
+                    transform:translate(-50%,0)
+
+                }
+             }
+              
          }
-         a.active{
-            color:red;
-        }
+         
          
      }
      .divider{
