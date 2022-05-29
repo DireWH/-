@@ -3,18 +3,15 @@ import { NavLink } from 'react-router-dom'
 import Carousel_content from '../../../UI/Carousel.js'
 import { TopNavigator, Carousel,Downpart } from './style.js'
 import { SmileTwoTone  } from '@ant-design/icons';
-import { getBanner } from '@/api/index'
+import {connect} from 'react-redux';
+import { getTopBannerAction } from './store/actionCreators.js';
 
-const Content = memo(() => {
-  const [banner, setBanner] = useState([])
-  useEffect(() => {
-    getBanner().then(res => { 
-      setBanner(res.banners)
-    })
-  }, [])
-  useEffect(() => {
-    console.log(banner)
-  }, [banner])
+const Content = memo((props) => {
+  const {getBanners,topBanners} = props
+
+  useEffect(()=>{
+    getBanners()
+  },[])
 
   return (
     <div>
@@ -29,7 +26,7 @@ const Content = memo(() => {
         </div>
       </TopNavigator>
       <Carousel>
-        <Carousel_content banner={banner}></Carousel_content>
+        <Carousel_content banner={topBanners}></Carousel_content>
       </Carousel>
       <Downpart>
           <div className='Recommend-Navi'>
@@ -50,5 +47,13 @@ const Content = memo(() => {
     </div>
   )
 })
+const mapStateProps= state=>({
+  topBanners:state.recommend.topBanners
+})
 
-export default Content
+const mapsDispatchToProps=dispatch=>({
+  getBanners:()=>{
+    dispatch(getTopBannerAction())
+  }
+})
+export default connect(mapStateProps,mapsDispatchToProps)(Content)
