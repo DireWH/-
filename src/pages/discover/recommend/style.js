@@ -7,7 +7,7 @@ export const TopNavigator = styled.div`
       justify-content:center;
       .navigator{
           
-          width:490px;
+          width:565px;
           display:flex;
           justify-content:space-between;
           a{

@@ -1,6 +1,8 @@
 import React, { memo } from 'react'
 import { NavLink } from 'react-router-dom'
-import { HeadWrapper, HeadLeft,HeadRight } from "./style"
+import { HeadWrapper, HeadLeft, HeadRight } from "./style"
+import { SearchOutlined } from '@ant-design/icons';
+import {Input} from 'antd'
 const WAppHeader = memo(() => {
   return (
     <HeadWrapper>
@@ -15,8 +17,12 @@ const WAppHeader = memo(() => {
         <NavLink to={'/musician'}>音乐人<span className='sprite_01 icon'></span></NavLink>
         <NavLink to={'/download'}>下载客户端<span className='sprite_01 icon'></span></NavLink>
         <HeadRight>
-
-          </HeadRight>
+          <div className='SearchContainer'>
+            <Input className='search' placeholder='音乐/视频/电台/用户' prefix={<SearchOutlined/>}  />
+          </div>
+          <div className='textContainer'>创作者中心</div>
+          <div className='loginContainer'>登录</div>
+        </HeadRight>
       </div>
       <div className='divider'></div>
     </HeadWrapper>

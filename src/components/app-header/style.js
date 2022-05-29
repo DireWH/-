@@ -8,7 +8,32 @@ export const HeadLeft = styled.div`
     }
 `
 export const HeadRight = styled.div`
-    
+    margin-left:50px;
+    heigh:69px;
+    width:300px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    .search{
+        width:170px;
+        height:32px;
+        border-radius:16px;
+    }
+    .textContainer{
+        heiht:20px;
+        line-height:22px;
+        width:90px;
+        text-align:center;
+        font-size:12px;
+        border: solid 1px grey;
+        border-radius:16px;
+        color:white;
+    }
+    .loginContainer{
+        font-size:13px;
+        color:grey;
+        margin-left:5px;
+    }
 `
 export const HeadWrapper = styled.div`
      

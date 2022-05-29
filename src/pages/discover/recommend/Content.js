@@ -1,6 +1,6 @@
 import React, { memo, useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
-import Carousel_content from '../../UI/Carousel.js'
+import Carousel_content from '../../../UI/Carousel.js'
 import { TopNavigator, Carousel,Downpart } from './style.js'
 import { SmileTwoTone  } from '@ant-design/icons';
 import { getBanner } from '@/api/index'
