@@ -3,15 +3,18 @@ import { NavLink } from 'react-router-dom'
 import Carousel_content from '../../../UI/Carousel.js'
 import { TopNavigator, Carousel,Downpart } from './style.js'
 import { SmileTwoTone  } from '@ant-design/icons';
-import {connect} from 'react-redux';
+import {connect, useDispatch, useSelector} from 'react-redux';
 import { getTopBannerAction } from './store/actionCreators.js';
 
 const Content = memo((props) => {
-  const {getBanners,topBanners} = props
+  const dispatch =useDispatch();
+  const {topBanners}=useSelector(state=>({
+    topBanners:state.recommend.topBanners
+  }))
 
   useEffect(()=>{
-    getBanners()
-  },[])
+    dispatch(getTopBannerAction())
+  },[dispatch])
 
   return (
     <div>
@@ -47,13 +50,5 @@ const Content = memo((props) => {
     </div>
   )
 })
-const mapStateProps= state=>({
-  topBanners:state.recommend.topBanners
-})
 
-const mapsDispatchToProps=dispatch=>({
-  getBanners:()=>{
-    dispatch(getTopBannerAction())
-  }
-})
-export default connect(mapStateProps,mapsDispatchToProps)(Content)
+export default Content
