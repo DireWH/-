@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { TopNavigator, RecommendWrapper,RecommendLeft,RecommendRight,Container } from './style.js'
 import  HotRecommendWrapper  from './childen-components/hot-recommend/index.js';
 import TopBanner from './childen-components/Carousel/Carousel';
+import Album from './childen-components/new-album/index.js';
+import Ranking from './childen-components/recommend-ranking/index.js';
 
 
 //数据使用immutable和react-redux
@@ -26,6 +28,8 @@ const Content = memo((props) => {
         <Container className='w980'>
           <RecommendLeft>
             <HotRecommendWrapper/>
+            <Album/>
+            <Ranking/>
           </RecommendLeft>
           <RecommendRight></RecommendRight>
         </Container>

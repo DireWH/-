@@ -1,5 +1,5 @@
 import * as actionTypes from './constants'
-import { getBanner,getHotRecommends } from '../../../../api/discover'
+import { getBanner,getHotRecommends, getTopAlbums } from '../../../../api/discover'
 
 const changeTopBannerAction =(res)=>({
     type:actionTypes.CHANGE_TOP_BANNERS,
@@ -20,11 +20,27 @@ const changeHotRecommendAction = (res) => ({
     hotRecommends: res.result,
   })
 
-  export const getHostBannersAction = () => {
+  export const getHostBannersAction = (limit) => {
     return (dispatch) => {
-      getHotRecommends().then((res) => {
+      getHotRecommends(limit).then((res) => {
         dispatch(changeHotRecommendAction(res))
       })
     }
   }
 //--------------------------------這部分是獲取首頁推薦的請求----------------------------------------------//
+
+const changeNewAlbumAction = (res) => ({
+  type: actionTypes.CHANGE_NEW_ALBUMS,
+  newAlbums: res.albums,
+})
+
+export const getNewAlbumAction = (limit) => {
+  return (dispatch) => {
+    getTopAlbums(limit).then((res) => {
+      dispatch(changeNewAlbumAction(res))
+    })
+  }
+}
+
+
+//--------------------------------這部分是獲取首頁碟片的請求----------------------------------------------//

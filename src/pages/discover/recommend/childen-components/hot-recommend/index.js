@@ -1,8 +1,10 @@
 import React, { memo,useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { getHostBannersAction } from '../../store/actionCreators';
+import { getHostBannersAction, getNewAlbumAction } from '../../store/actionCreators';
 import { HotRecommendWrapper } from './styled'
-
+import ThemHeader from '../../../../../components/theme-header-rec';
+import SongCover from '../../../../../components/song-Cover';
+import { getTopAlbums } from '../../../../../api/discover';
 const index = memo(() => {
 
     const dispatch = useDispatch();
@@ -12,12 +14,23 @@ const index = memo(() => {
 
     //加载时发送请求
     useEffect(() => {
-        dispatch(getHostBannersAction())
+        dispatch(getHostBannersAction(8))
     }, [dispatch])
+
+    useEffect(() => {
+      getTopAlbums(10,10).then(res=>{console.log(res)})
+  }, [])
 
   return (
     <HotRecommendWrapper>
-        {hotRecommends[0]?.id}
+       <ThemHeader title="推荐" keywords={['华语','流行','民谣','摇滚','电子']}/>
+       <div className='recommend-list'>
+         {
+           hotRecommends.map((item,index)=>{
+             return <SongCover key={item.id} info={item}/>
+           })
+         }
+       </div>
     </HotRecommendWrapper>
   )
 })

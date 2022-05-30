@@ -27,7 +27,7 @@ export const RecommendWrapper = styled.div`
 export const Container = styled.div`
   background-color: #fff;
   display: flex;
-  background-color:red;
+  
 `
 
 export const RecommendLeft = styled.div`

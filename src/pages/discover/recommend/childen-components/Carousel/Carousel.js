@@ -33,7 +33,7 @@ const TopBanner = memo(() => {
     
     return (
         <BannerWrapper bgImage={bgImage}>
-            <div className='banner wrap-v2'>
+            <div className='banner '>
                 <BannerLeft>
                     <Carousel effect='fade' autoplay ref={bannerRef} beforeChange={bannerChange}>
                         {

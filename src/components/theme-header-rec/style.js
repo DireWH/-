@@ -1,53 +1,54 @@
-import styled from 'styled-components'
+import styled from "styled-components";
+export const HeaderWrapper = styled.div`
+height:33px;
+ border-bottom:2px solid #C10D0C;
+ padding: 0 10px 4px 34px;
+ background-position:-225px -156px;
 
-export const RcmHeaderWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  height: 33px;
-  padding: 0 10px 0 0;
-  padding-left: ${props => props.showIcon?'34px':'2px'};
-  border-bottom: 2px solid #c10d0c;
-  background: ${props => {
-    const url = 'url('+require('@/assets/img/sprite_02.png')+') no-repeat center'
-    return props.showIcon?  url: ''
-  } };
-  background-position: -225px -156px;
-  line-height: 33px;
-`
+ display:flex;
+ justify-content: space-between;
+ align-items: center;
+.left{
+    display:flex;
+    align-items:center;
+    
+    .keyword{
+        display:flex;
+    }
+    .title{
+        font-size:18px;
+        color:black;
+    }
+    .item{
+        font-size:12px;
+        a{
+            color:black;
+        }
+        &:nth-child(1){
+            margin-left:20px;
+        }
+        .divider{
+          margin: 0 15px;
+          color: black;
+          
+        }
+    }
+}
+.right{
+    display:flex;
+    align-items:center;
 
-export const RcmHeaderLeft = styled.div`
-  display: flex;
-  .hot-title {
-    display: flex;
-    margin-bottom: 5px;
-    a {
-      color: #333333;
-      &:hover {
-        text-decoration: none;
-      }
+    .icon {
+      display:inline-block;
+      width: 12px;
+      height: 12px;
+      margin-left: 4px;
+      background-position: 0 -240px;
+    }
+    a{
+        color:black;
+        font-size:12px;
     }
   }
-  .keywords {
-    display: flex;
-    margin-left: 20px;
-    color: #ccc;
-    line-height: 35px;
-    .item {
-      .line {
-        margin: 0 10px;
-      }
-    }
-  }
-`
-
-export const RcmHeaderRight = styled.div`
-  .icon {
-    display: inline-block;
-    width: 12px;
-    height: 12px;
-    margin-left: 4px;
-    vertical-align: middle;
-    background: transparent url('${require('@/assets/img/sprite_02.png')}') no-repeat center;
-    background-position: 0 -240px;
-  }
+}
 `
