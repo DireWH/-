@@ -14,13 +14,9 @@ export function getHotRecommends(limit) {
   }
 //-------------------------------首页推荐页面的数据请求------------------------------
 
-export function getTopAlbums(limit,offset){
+export function getTopAlbums(){
   return requests({
-    url:'/top/album',
-    params:{
-      limit,
-      offset
-    }
+    url:'/album/newest',
   })
 }
 //-----------------------------首页新碟上榜的请求数据--------------------
