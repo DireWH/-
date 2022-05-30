@@ -1,12 +1,13 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo } from 'react'
 import { NavLink } from 'react-router-dom'
-import { TopNavigator, RecommendWrapper } from './style.js'
+import { TopNavigator, RecommendWrapper,RecommendLeft,RecommendRight,Container } from './style.js'
+import  HotRecommendWrapper  from './childen-components/hot-recommend/index.js';
 import TopBanner from './childen-components/Carousel/Carousel';
 
 
 //数据使用immutable和react-redux
 const Content = memo((props) => {
- 
+
   return (
     <div>
       <TopNavigator>
@@ -19,8 +20,17 @@ const Content = memo((props) => {
           <NavLink to={'/ddiscover/album'} end>新碟上架</NavLink>
         </div>
       </TopNavigator>
-      <TopBanner></TopBanner>
-      
+
+      <RecommendWrapper>
+        <TopBanner />
+        <Container className='w980'>
+          <RecommendLeft>
+            <HotRecommendWrapper/>
+          </RecommendLeft>
+          <RecommendRight></RecommendRight>
+        </Container>
+      </RecommendWrapper>
+
 
     </div>
   )
