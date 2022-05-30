@@ -1,21 +1,12 @@
-import React, { memo, useEffect, useState } from 'react'
+import React, { memo, useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
-import Carousel_content from '../../../UI/Carousel.js'
-import { TopNavigator, Carousel,Downpart } from './style.js'
-import { SmileTwoTone  } from '@ant-design/icons';
-import {connect, useDispatch, useSelector} from 'react-redux';
-import { getTopBannerAction } from './store/actionCreators.js';
+import { TopNavigator, RecommendWrapper } from './style.js'
+import TopBanner from './childen-components/Carousel/Carousel';
 
+
+//数据使用immutable和react-redux
 const Content = memo((props) => {
-  const dispatch =useDispatch();
-  const {topBanners}=useSelector(state=>({
-    topBanners:state.recommend.topBanners
-  }))
-
-  useEffect(()=>{
-    dispatch(getTopBannerAction())
-  },[dispatch])
-
+ 
   return (
     <div>
       <TopNavigator>
@@ -28,25 +19,9 @@ const Content = memo((props) => {
           <NavLink to={'/ddiscover/album'} end>新碟上架</NavLink>
         </div>
       </TopNavigator>
-      <Carousel>
-        <Carousel_content banner={topBanners}></Carousel_content>
-      </Carousel>
-      <Downpart>
-          <div className='Recommend-Navi'>
-            <SmileTwoTone twoToneColor="red" style={{fontSize:'12px', marginTop:'14px'}}/><h3>热门推荐</h3>
-            <ul>
-              <li>华语<span>|</span></li>
-              <li>流行<span>|</span></li>
-              <li>摇滚<span>|</span></li>
-              <li>民谣<span>|</span></li>
-              <li>电子<span>|</span></li>
-            </ul>
-          </div>
+      <TopBanner></TopBanner>
+      
 
-          <div className='Recommend-Container'>
-            <div className='Recommend-wrapper'></div>
-          </div>
-      </Downpart>
     </div>
   )
 })
