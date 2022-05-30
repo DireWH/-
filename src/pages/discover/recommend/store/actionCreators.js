@@ -34,7 +34,7 @@ const changeNewAlbumAction = (res) => ({
   newAlbums: res.albums,
 })
 
-export const getNewAlbumAction = (limit) => {
+export const getNewAlbumAction = () => {
   return (dispatch) => {
     getTopAlbums().then((res) => {
       dispatch(changeNewAlbumAction(res))

@@ -1,44 +1,49 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
-export const AlbumWrapper = styled.div `
-margin-top:50px;
-
-.content {
-    height:186px;
-    background-color: #f5f5f5;
-    border: 1px solid #d3d3d3;
+export const NewAlbumWrapper = styled.div`
+  margin-top: 38px;
+  margin-bottom: 10px;
+  .content {
+    position: relative;
+    display: flex;
+    /* 设置主轴排序方式 */
+    justify-content: center;
+    /* 设置侧轴排序方式 */
+    align-items: center;
+    height: 186px;
     margin: 20px 0 37px;
-    display:flex;
-    align-items:center;
-
-    .arrow{
-        width:30px;
-        height:17px;
-        cursor:pointer;
+    border: 1px solid #d3d3d3;
+    background-color: #f5f5f5;
+    .inner {
+      width: 640px;
+      height: 150px;
+      .page {
+        display: flex !important;
+        justify-content: space-between;
+        /* .c-item {
+          width: 118px;
+          height: 151px;
+          background-color: #ccc;
+          margin-right: 10px;
+        } */
+      }
     }
-
-    .arrow-left{
-        background-position: -260px -75px;
+    .arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 24px;
+      height: 24px;
+      background-position-y: -76px;
+      cursor: pointer;
     }
-
-    .arrow-right{
-        background-position: -300px -75px;
+    .arrow-left {
+      left: 5px;
+      background-position-x: -261px;
     }
-
-    .album{
-        width:640px;
-        height:150px;
-
-        .ant-carousel .slick-slide{
-            height:150px;
-            overflow:hidden;
-        }
-
-        .page{
-            display:flex !important;
-            justify-cotent:space-between;
-            align-items:center;
-        }
-    } 
-}
+    .arrow-right {
+      right: 5px;
+      background-position-x: -294px;
+    }
+  }
 `
