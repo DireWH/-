@@ -1,10 +1,11 @@
 import React,{memo} from 'react';
 import ThemHeader from '@/components/theme-header-rec/';
+import {RankingWrapper} from './style.js'
 const Ranking = memo(() => {
     return (
-        <div>
+        <RankingWrapper>
             <ThemHeader title="榜单"/>
-        </div>
+        </RankingWrapper>
     );
 })
 

@@ -20,3 +20,10 @@ export function getTopAlbums(){
   })
 }
 //-----------------------------首页新碟上榜的请求数据--------------------
+
+export function getTopList(){
+  return requests({
+    url:'toplist/detail',
+  })
+}
+//--------------------------------首页榜单的请求数据---------------------

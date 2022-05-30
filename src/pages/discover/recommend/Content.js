@@ -9,7 +9,7 @@ import Ranking from './childen-components/recommend-ranking/index.js';
 
 //数据使用immutable和react-redux
 const Content = memo((props) => {
-
+ 
   return (
     <div>
       <TopNavigator>

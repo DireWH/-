@@ -4,6 +4,7 @@ import ThemeHeaderRcm from '@/components/theme-header-rec'
 import { NewAlbumWrapper } from './style'
 import { Carousel } from 'antd'
 import { getNewAlbumAction } from '../../store/actionCreators'
+import Albumcover from '@/components/album-cover/index.js'
 
 export default memo(function NewAlbum() {
   // redux hook
@@ -38,7 +39,7 @@ export default memo(function NewAlbum() {
                   {/* item * 5, (item+1) * 5   第一次遍历0  5  第二次遍历 5  10  */}
                   {newAlbums && newAlbums.slice(item * 5, (item + 1) * 5).map(cItem => {
                     return (
-                     <div key={cItem.id}>{cItem.name} </div>
+                     <Albumcover key={cItem.id} info={cItem} size={100} width={118} bgp='-570px ' >{cItem.name} </Albumcover>
                     )
                   })}
                 </div>

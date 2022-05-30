@@ -17,6 +17,8 @@ const index = memo(() => {
         dispatch(getHostBannersAction(8))
     }, [dispatch])
 
+   
+
     
 
   return (
