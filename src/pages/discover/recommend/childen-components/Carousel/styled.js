@@ -52,7 +52,7 @@ export const BannerControl = styled.div`
       background-position: 0 -360px;
     }
     &:nth-child(2) {
-      right: 270px;
+      right: 511px;
       background-position: 0 -508px;
     }
   }

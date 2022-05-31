@@ -31,7 +31,7 @@ const Content = memo((props) => {
             <Album/>
             <Ranking/>
           </RecommendLeft>
-          <RecommendRight></RecommendRight>
+          <RecommendRight> 這部分沒有接口數據 懶得用mock寫</RecommendRight>
         </Container>
       </RecommendWrapper>
 

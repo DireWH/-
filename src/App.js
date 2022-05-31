@@ -5,6 +5,8 @@ import { BrowserRouter } from 'react-router-dom'
 import GetRoutes from "./router";
 import store from "./store";
 import { Provider} from 'react-redux'
+import AppPlayer from "./pages/player/app-player-bar";
+
 function App() {
   return (
     <Provider store={store}>
@@ -12,6 +14,7 @@ function App() {
         <h2><WAppHeader /></h2>
         <h2><GetRoutes /></h2>
         <h2><WAppfooter /></h2>
+        <AppPlayer></AppPlayer>
       </BrowserRouter>
     </Provider>
 
