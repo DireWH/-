@@ -47,17 +47,17 @@ export const getNewAlbumAction = () => {
 
 export const changeUpRanking = (res) => ({
   type: actionTypes.CHANGE_UP_RANKING,
-  upRanking: res.playlist.tracks,
+  upRanking: res.playlist,
 })
 // 新歌榜单Action
 export const changeNewRanking = (res) => ({
   type: actionTypes.CHANGE_NEW_RANKING,
-  newRanking: res.playlist.tracks,
+  newRanking: res.playlist,
 })
 // 原创榜单Action
 export const changeOriginRanking = (res) => ({
   type: actionTypes.CHANGE_ORIGIN_RANKING,
-  originRanking: res.playlist.tracks,
+  originRanking: res.playlist
 })
 
 
