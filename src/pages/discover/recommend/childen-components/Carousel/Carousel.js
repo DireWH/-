@@ -7,7 +7,7 @@ import {
 } from './styled'
 import { Carousel } from 'antd';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
-import { getTopBannerAction } from '../../store/actionCreators';
+import { getTopBannerAction,getTopListAction } from '../../store/actionCreators';
 
 
 const TopBanner = memo(() => {
@@ -22,6 +22,12 @@ const TopBanner = memo(() => {
     useEffect(() => {
         dispatch(getTopBannerAction())
     }, [dispatch])
+
+    useEffect(() => { 
+        dispatch(getTopListAction(19723756))
+        dispatch(getTopListAction(3779629))
+        dispatch(getTopListAction(2884035))
+      }, [dispatch])
 
     const bannerRef = useRef();
 

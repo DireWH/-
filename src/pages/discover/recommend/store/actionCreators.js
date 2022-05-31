@@ -1,5 +1,5 @@
 import * as actionTypes from './constants'
-import { getBanner,getHotRecommends, getTopAlbums } from '../../../../api/discover'
+import { getBanner,getHotRecommends, getTopAlbums,getToplistDetail } from '../../../../api/discover'
 
 const changeTopBannerAction =(res)=>({
     type:actionTypes.CHANGE_TOP_BANNERS,
@@ -45,5 +45,38 @@ export const getNewAlbumAction = () => {
 
 //--------------------------------這部分是獲取首頁碟片的請求----------------------------------------------//
 
+export const changeUpRanking = (res) => ({
+  type: actionTypes.CHANGE_UP_RANKING,
+  upRanking: res.playlist.tracks,
+})
+// 新歌榜单Action
+export const changeNewRanking = (res) => ({
+  type: actionTypes.CHANGE_NEW_RANKING,
+  newRanking: res.playlist.tracks,
+})
+// 原创榜单Action
+export const changeOriginRanking = (res) => ({
+  type: actionTypes.CHANGE_ORIGIN_RANKING,
+  originRanking: res.playlist.tracks,
+})
 
+
+export const getTopListAction = (idx) => {
+  return (dispatch) => {
+    getToplistDetail(idx).then((res) => {
+      switch (idx) {
+        case 19723756:
+          dispatch(changeUpRanking(res))
+          break
+        case 3779629:
+          dispatch(changeNewRanking(res))
+          break
+        case 2884035:
+          dispatch(changeOriginRanking(res))
+          break
+        default:
+      }
+    })
+  }
+}
 //--------------------------------這部分是獲取首頁排名的請求----------------------------------------------//

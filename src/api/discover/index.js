@@ -27,3 +27,18 @@ export function getTopList(){
   })
 }
 //--------------------------------首页榜单的请求数据---------------------
+
+export function getToplistInfo() {
+  return requests({
+    url: '/toplist'
+  })
+}
+
+export function getToplistDetail(id) {
+  return requests({
+    url: '/playlist/detail',
+    params: {
+      id
+    }
+  })
+}
