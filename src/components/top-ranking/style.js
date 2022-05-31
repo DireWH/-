@@ -69,38 +69,43 @@ export const TopRankingWrapper = styled.div`
               font-size:16px;
           }
 
-          .name{
+          .info{
               color:#000;
               font-size:12px;
-          }
-
-          .operate{
-              position:absolute;
               display:flex;
-              align-items:center;
-              right:0; 
-              display:none;
+              justify-content:space-between;
+              width:170px;
 
-              .btn{
-                  width:17px;
-                  height:17px;
-                  margin-right:8px;
-                  cursor:pointer;
+              .name{
+                  flex:1;
               }
-
-              .play{
-                  background-position: -267px -268px
-              }
-
-              .addto{
-                  position: relative;
-                  top:2px;
-                  background-position: 0 -700px;
-              }
-
-              .favor{
-                  background-position: -297px -268px;
-              }
+              .operate{
+                width:82px;
+                display:flex;
+                align-items:center; 
+                display:none;
+                
+                .btn{
+                    width:17px;
+                    height:17px;
+                    margin-right:8px;
+                    cursor:pointer;
+                }
+  
+                .play{
+                    background-position: -267px -268px
+                }
+  
+                .addto{
+                    position: relative;
+                    top:2px;
+                    background-position: 0 -700px;
+                }
+  
+                .favor{
+                    background-position: -297px -268px;
+                }
+            }
           }
 
           &:hover{
@@ -117,6 +122,7 @@ export const TopRankingWrapper = styled.div`
       align-items:center;
       margin-right:32px;
       justify-content:flex-end;
+      font-size:12px;
 
       a{
           color:#000;   
