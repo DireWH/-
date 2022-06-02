@@ -2,8 +2,23 @@ import React, { memo, useState, useEffect, useRef, useCallback } from 'react';
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { PlaybarWrapper,Control, PlayInfo, Operator } from './style';
 import {Slider} from 'antd';
+import { getSongDetailAction } from '../store/actionCreators';
+import {getSizeImage} from '@/utils/format-utils';
+import { formatDate } from '../../../utils/format-utils';
+
 
 const AppPlayer = memo(() => {
+
+  const dispatch = useDispatch()
+  useEffect(()=>{
+    dispatch(getSongDetailAction(167876))
+    },[dispatch])
+
+    const {currentSong} =useSelector(state=>({
+      currentSong: state.getIn(["player","currentSong"])
+    }),shallowEqual)
+
+    const showDuration =formatDate(currentSong?.dt, "mm:ss")
   return (
     <PlaybarWrapper className='sprite_player'>
       <div className='content w980'>
@@ -15,20 +30,20 @@ const AppPlayer = memo(() => {
         <PlayInfo>
           <div className='image'>
             <a href='/#'>
-              <img src="" alt=""/>
+              <img src={getSizeImage(currentSong?.al?.picUrl,35)} alt=""/>
             </a>
           </div>
           <div className='info'>
             <div className='song'>
-              <span className='song-name'>紅豆</span>
-              <a href='/#' className='singer-name'>要不要買菜</a>
+              <span className='song-name'>{currentSong?.name}</span>
+              <a href='/#' className='singer-name'>{currentSong.ar &&currentSong.ar[0].name }</a>
             </div>
             <div className='progress'>
               <Slider defaultValue={30}/>
               <div className='time'>
                 <span className='now-time'>02:30</span>
                 <span className='divider'>/</span>
-                <span className='duration'>04:30</span>
+                <span className='duration'>{showDuration}</span>
               </div>
             </div>
           </div>

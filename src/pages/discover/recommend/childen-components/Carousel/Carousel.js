@@ -23,11 +23,7 @@ const TopBanner = memo(() => {
         dispatch(getTopBannerAction())
     }, [dispatch])
 
-    useEffect(() => { 
-        dispatch(getTopListAction(19723756))
-        dispatch(getTopListAction(3779629))
-        dispatch(getTopListAction(2884035))
-      }, [dispatch])
+    
 
     const bannerRef = useRef();
 

@@ -26,7 +26,6 @@ export function getTopList(){
     url:'toplist/detail',
   })
 }
-//--------------------------------首页榜单的请求数据---------------------
 
 export function getToplistInfo() {
   return requests({
@@ -42,3 +41,26 @@ export function getToplistDetail(id) {
     }
   })
 }
+
+//--------------------------------首页榜单的请求数据---------------------
+export function getSongDetail(ids){
+  return requests({
+    url:"/song/detail",
+    params:{
+      ids
+    }
+  })
+}
+
+//--------------------------------首页歌曲的请求数据---------------------
+
+
+
+
+
+
+
+
+
+
+//--------------------------------歌曲詳情的請求數據---------------------
