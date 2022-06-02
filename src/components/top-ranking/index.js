@@ -1,9 +1,11 @@
 import React, { memo } from 'react'
+import { useDispatch } from 'react-redux'
+import { getSongDetailAction } from '../../pages/player/store/actionCreators'
 import { TopRankingWrapper } from './style'
-import { getSizeImage } from '../../utils/format-utils';
 
 
 const index = memo((props) => {
+    const dispatch=useDispatch()
     const { info } = props;
     return (
         <TopRankingWrapper>
@@ -30,7 +32,7 @@ const index = memo((props) => {
                                 <div className='info'>
                                     <span className='name text-nowrap'>{item.name}</span>
                                     <div className='operate'>
-                                        <button className='btn sprite_02 play'></button>
+                                        <button className='btn sprite_02 play' onClick={e=>{dispatch(getSongDetailAction(item.id))} }></button>
                                         <button className='btn sprite_icon2 addto'></button>
                                         <button className='btn sprite_02 favor'></button>
                                     </div>

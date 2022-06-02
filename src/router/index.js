@@ -2,6 +2,7 @@ import { useRoutes } from "react-router-dom";
 import Friend from "../pages/friend/Friend";
 import Content from "../pages/discover/recommend/Content";
 import Mine from "../pages/mine/Mine";
+import Player from "../pages/player";
 export default function GetRoutes() {
 
     const routes = useRoutes([
@@ -41,6 +42,10 @@ export default function GetRoutes() {
         {
             path: '/friend',
             element: <Friend />
+        },
+        {
+            path: '/song/:id',
+            element: <Player/>
         },
     ])
     return routes
