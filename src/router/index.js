@@ -44,7 +44,7 @@ export default function GetRoutes() {
             element: <Friend />
         },
         {
-            path: '/song/:id',
+            path: '/song',
             element: <Player/>
         },
     ])
