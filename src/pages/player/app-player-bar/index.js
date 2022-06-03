@@ -1,8 +1,9 @@
 import React, { memo, useState, useEffect, useRef, useCallback } from 'react';
+import {NavLink} from "react-router-dom"
 import { useDispatch, useSelector, shallowEqual } from 'react-redux';
 import { PlaybarWrapper, Control, PlayInfo, Operator } from './style';
 import { Slider } from 'antd';
-import { getSongDetailAction } from '../store/actionCreators';
+import { getSongDetailAction, changeSequenceAction,changeCurrentIndexAndSongAction } from '../store/actionCreators';
 import { getSizeImage, getPlaySong, formatDate } from '@/utils/format-utils';
 
 
@@ -20,8 +21,9 @@ const AppPlayer = memo(() => {
     dispatch(getSongDetailAction(167876))
   }, [dispatch])
 
-  const { currentSong } = useSelector(state => ({
-    currentSong: state.getIn(["player", "currentSong"])
+  const { currentSong, sequence } = useSelector(state => ({
+    currentSong: state.getIn(["player", "currentSong"]),
+    sequence: state.getIn(["player", "sequence"])
   }), shallowEqual)
 
   const audioRef = useRef();
@@ -34,23 +36,21 @@ const AppPlayer = memo(() => {
   useEffect(() => {
     // 只有切歌或第一次时需要得到src
     audioRef.current.src = getPlaySong(currentSong.id)
+    setCurrentTime(0);
+    setProgress(0);
     audioRef.current.play().then(res => {
       setIsPlaying(true)
       console.log('播放成功')
-        }).catch(err => {
+    }).catch(err => {
       setIsPlaying(false)
-        console.log('播放失败')
+      console.log(err)
     })
-    
+
   }, [currentSong])
 
-  useEffect(() => {
-    audioRef.current.src = getPlaySong(currentSong.id)
-    setCurrentTime(0);
-    setProgress(0);
-  }, [currentSong])
+  
 
-  useEffect(()=>{ console.log(isPlaying)},[isPlaying])
+  useEffect(() => { console.log(isPlaying) }, [isPlaying])
   const timeUpdate = (e) => {
     if (!isChanging) {
       setCurrentTime(e.target.currentTime * 1000);
@@ -74,21 +74,34 @@ const AppPlayer = memo(() => {
     setIsChanging(false);
   }, [currentSong])
 
+  const changeSequence = () => {
+    let currentSequence = sequence + 1;
+    if (currentSequence > 2) { currentSequence = 0 }
+    dispatch(changeSequenceAction(currentSequence));
+  }
+
+  const changeMusic = (tag) => {
+    dispatch(changeCurrentIndexAndSongAction(tag));
+  }
+
+  const handleEnd=()=>{
+    
+  }
 
 
   return (
     <PlaybarWrapper className='sprite_player'>
       <div className='content w980'>
         <Control isPlaying={isPlaying} >
-          <button className='sprite_player prev'></button>
+          <button className='sprite_player prev' onClick={ e => changeMusic(-1)}></button>
           <button className='sprite_player play' onClick={e => { playMusic() }}></button>
-          <button className='sprite_player next'></button>
+          <button className='sprite_player next' onClick={ e => changeMusic(+1)}></button>
         </Control>
         <PlayInfo>
           <div className='image'>
-            <a href='/#'>
+            <NavLink  to={`/song/id=${currentSong.id }`}>
               <img src={getSizeImage(currentSong?.al?.picUrl, 35)} alt="" />
-            </a>
+            </NavLink>
           </div>
           <div className='info'>
             <div className='song'>
@@ -107,20 +120,20 @@ const AppPlayer = memo(() => {
             </div>
           </div>
         </PlayInfo>
-        <Operator>
+        <Operator sequence={sequence}>
           <div className='left'>
             <button className='sprite_player btn favor'></button>
             <button className='sprite_player btn share'></button>
           </div>
           <div className='right sprite_player'>
             <button className='sprite_player btn volume'></button>
-            <button className='sprite_player btn loop'></button>
+            <button className='sprite_player btn loop' onClick={e => changeSequence()} ></button>
             <button className='sprite_player btn playlist'></button>
 
           </div>
         </Operator>
       </div>
-      <audio ref={audioRef} onTimeUpdate={e => timeUpdate(e)} />
+      <audio ref={audioRef} onTimeUpdate={e => timeUpdate(e)} onEnded={ e => handleEnd()} />
     </PlaybarWrapper>
   )
 })

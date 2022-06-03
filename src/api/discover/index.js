@@ -54,11 +54,14 @@ export function getSongDetail(ids){
 
 //--------------------------------首页歌曲的请求数据---------------------
 
-
-
-
-
-
+export function getLyric(id) {
+  return requests({
+    url: "/lyric",
+    params: {
+      id
+    }
+  })
+}
 
 
 
